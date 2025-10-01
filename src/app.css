@@ -1,0 +1,25 @@
+@import 'tailwindcss';
+
+@layer base {
+    :root {
+        --height-main-header: 5rem;
+        --max-width-container: 1024px;
+        --padding-container: 1rem;
+    }
+    html {
+        font-size: clamp(16px, 2vw, 18px);
+        font-family: 'Atkinson Hyperlegible Next Variable', sans-serif;
+    }
+    body {
+        height: 100svh;
+    }
+    button {
+        cursor: pointer;
+    }
+}
+@layer utilities {
+    .container-width-limit {
+        @apply max-w-(--max-width-container) mx-auto px-(--padding-container);
+    }
+}
+
