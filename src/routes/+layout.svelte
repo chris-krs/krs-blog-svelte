@@ -1,5 +1,5 @@
 <script lang="ts">
-	import "../app.css";
+	import "$lib/styles/app.css";
 	import favicon from "$lib/assets/avatar.png";
 	import "@fontsource-variable/atkinson-hyperlegible-next";
 	import Header from "$lib/components/Header.svelte";
