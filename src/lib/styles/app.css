@@ -7,21 +7,74 @@
         --max-width-container: 1024px;
         --padding-container: 1rem;
     }
+
     html {
-        font-size: clamp(16px, 2vw, 18px);
+        color: var(--color-text);
+        font-size: clamp(14px, 2vw, 17px);
         scrollbar-gutter: stable;
         font-family: 'Atkinson Hyperlegible Next Variable', sans-serif;
     }
+
     body {
         height: 100svh;
     }
+
+    a {
+        cursor: pointer;
+    }
+
     button {
         cursor: pointer;
     }
+
+    h1 {
+        @apply text-3xl font-medium;
+    }
+
+    h2 {
+        @apply text-2xl font-medium;
+    }
 }
+
 @layer utilities {
     .container-width-limit {
         @apply max-w-(--max-width-container) mx-auto px-(--padding-container);
     }
+
+    .forbid-scroll {
+        @apply overflow-hidden;
+    }
 }
 
+@layer components {
+    .overlay {
+        @apply z-48 fixed left-0 top-0 w-svw h-svh;
+    }
+
+    .mask {
+        --mask-bg-color: oklch(29.783% 0.00227 67.404 / 0.377);
+        @apply z-49 fixed left-0 top-0 w-full h-full bg-(--mask-bg-color);
+    }
+
+    .drawer {
+        @apply absolute left-0 bottom-0 z-50 w-full h-[calc(100%-var(--height-main-header))] rounded-t-lg bg-white;
+
+        .drag-bar {
+            @apply h-10 after:rounded-xl after:h-2 after:w-10 after:bg-gray-300 after:absolute after:left-1/2 after:-translate-x-1/2 after:top-3;
+        }
+
+        .drawer-wrapper {
+            @apply px-10;
+        }
+    }
+}
+
+@theme {
+    --color-primary: oklch(70.5% 0.213 47.604);
+    --color-primary-50: oklch(98% 0.016 73.684);
+    --color-primary-100: oklch(95.4% 0.038 75.164);
+    --color-primary-200: oklch(90.1% 0.076 70.697);
+    --color-primary-300: oklch(83.7% 0.128 66.29);
+    --color-primary-400: oklch(75% 0.183 55.934);
+    --color-text: #373a3c;
+}

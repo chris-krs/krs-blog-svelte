@@ -1,10 +1,9 @@
 <script lang="ts">
-    import hoverSpringEffect from "$lib/actions/hover-spring-effect.svelte";
-    import pressSpringEffect from "$lib/actions/press-spring-effect.svelte";
     import logo from "$lib/assets/avatar.png";
     import { navLinks } from "$lib/consts";
 
     let mobileOrPC = $state<"unknown" | "mobile" | "pc">("unknown");
+
     $effect(() => {
         const check = () => {
             const match = window.matchMedia("(max-width: 768px)").matches;
@@ -16,9 +15,12 @@
             window.removeEventListener("resize", check);
         };
     });
+
 </script>
 
-<header class="fixed w-full backdrop-blur-lg border-b border-gray-200">
+<header
+    class="fixed w-full bg-white/10  backdrop-blur-lg z-30"
+>
     <div
         class="container-width-limit h-(--height-main-header) flex items-center justify-between"
     >
@@ -30,10 +32,8 @@
                 <nav class="hidden md:flex gap-8">
                     {#each navLinks as { title, href }}
                         <a
-                            class=" transition-colors duration-150 hover:bg-gray-100 px-2 rounded-lg"
-                            {href}
-                            use:hoverSpringEffect
-                            use:pressSpringEffect>{title}</a
+                            class="transition-colors duration-150 hover:text-primary px-2 py-0.5 rounded-lg decoration-dashed hover:underline underline-offset-4"
+                            {href}>{title}</a
                         >
                     {/each}
                 </nav>
@@ -42,12 +42,12 @@
                 <div class="block md:hidden">
                     <button
                         aria-label="menu"
-                        class="select-none"
-                        use:pressSpringEffect
+                        class="select-none rounded-full border border-text w-6 h-6 flex items-center justify-center"
                     >
-                        <span class="tabler--menu-2"></span></button
-                    >
+                        <span class="tabler--menu-2 !w-7 !h-7"></span>
+                    </button>
                 </div>
+                <!-- <Drawer></Drawer> -->
             {/if}
         </div>
     </div>

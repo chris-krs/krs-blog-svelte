@@ -1,3 +1,4 @@
+// import { prerender } from '$app/server';
 import type { PageServerLoad } from './$types';
 import _path from 'path';
 
@@ -15,7 +16,6 @@ export const load: PageServerLoad = () => {
         }
         posts.push(post)
     }
-    console.log(posts)
     return {
         posts
     };
